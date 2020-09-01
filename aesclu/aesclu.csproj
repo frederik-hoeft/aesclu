@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ApplicationIcon>shield.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy bin\Debug\netcoreapp3.1\$(TargetName).exe C:\usr\bin\$(TargetName).exe&#xD;&#xA;copy bin\Debug\netcoreapp3.1\$(TargetName).dll C:\usr\bin\$(TargetName).dll&#xD;&#xA;copy bin\Debug\netcoreapp3.1\$(TargetName).runtimeconfig.json C:\usr\bin\$(TargetName).runtimeconfig.json" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Scrypt.NET" Version="1.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>
